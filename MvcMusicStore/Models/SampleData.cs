@@ -16,8 +16,10 @@ namespace MvcMusicStore.Models
         protected override void Seed(MusicStoreEntities context)
         {
             var admin = new IdentityRole("Administrator");
+            var guest = new IdentityRole("Invitado");
 
             context.Roles.Add(admin);
+            context.Roles.Add(guest);
 
             var user = new ApplicationUser
             {

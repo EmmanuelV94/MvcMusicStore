@@ -14,6 +14,8 @@ namespace MvcMusicStore.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        MusicStoreEntities storeDB = new MusicStoreEntities();
+
 
         public AccountController()
         {
@@ -149,6 +151,11 @@ namespace MvcMusicStore.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                user.Roles.Add(new Microsoft.AspNet.Identity.EntityFramework.IdentityUserRole()
+                {
+                    UserId = user.Id,
+                    RoleId = storeDB.Roles.FirstOrDefault(x => x.Name == "Invitado").Id
+                });
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
