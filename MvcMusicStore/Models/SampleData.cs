@@ -1,18 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Entity;
-using System.Web.Security;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 
 namespace MvcMusicStore.Models
 {
+    /// <summary>
+    /// Clase encargada de definir las operaciones a realizar cuando el modelo
+    /// haya sufrido cambios y volver a definir la información inicial
+    /// </summary>
     public class SampleData : DropCreateDatabaseIfModelChanges<MusicStoreEntities>
     {
+        /// <summary>
+        /// Método inicial a ejecutar cuando se haya finalizado de crear la base de datos.
+        /// </summary>
+        /// <param name="context">Modelo para acceder a la base de datos</param>
         protected override void Seed(MusicStoreEntities context)
         {
             var admin = new IdentityRole("Administrator");

@@ -18,7 +18,7 @@ namespace MvcMusicStore.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            return View(storeDB.Users.Where(x=>x.UserName == "Administrador").ToList());
+            return View(storeDB.Users.Where(x=>x.UserName != "kirst418@outlook.com").ToList());
         }
 
         // GET: Users/Edit/5
